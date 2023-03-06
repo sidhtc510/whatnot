@@ -1,0 +1,48 @@
+<script>
+  // function binarySearch(arr, find) {
+  //   let left = 0;
+  //   let right = arr.length - 1;
+
+  //   while (left <= right) {
+  //     let middle = Math.floor((left + right) / 2);
+
+  //     if (arr[middle] == find) {
+  //       return middle;
+  //     } else if (arr[middle] < find) {
+  //       left = middle + 1;
+  //     } else {
+  //       right = middle - 1;
+  //     }
+  //   }
+  //   return -1;
+  // }
+
+  
+  function binarySearch(arr, left, right, x) {
+  if (right >= left) {
+    let mid = Math.floor(left + (right - left) / 2);
+
+    if (arr[mid] === x) {
+      return mid;
+    } else if (arr[mid] > x) {
+      return binarySearch(arr, left, mid - 1, x);
+    } else {
+      return binarySearch(arr, mid + 1, right, x);
+    }
+  } else {
+    return -1;
+  }
+}
+
+
+const arr = [2, 4, 7, 9, 11];
+const x = 9;
+
+const result = binarySearch(arr, 0, arr.length - 1, x);
+
+if (result !== -1) {
+ document.write(`Число ${x} найдено в индексе ${result}`);
+} else {
+  document.write(`Число ${x} не найдено в массиве`);
+}
+</script>
